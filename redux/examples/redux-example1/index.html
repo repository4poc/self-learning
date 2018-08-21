@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sample Redux Example</title>
+<script src="https://unpkg.com/redux@4.0.0/dist/redux.min.js"></script>
+</head>
+<body>
+  <div>
+  <p>
+    <span id="current_value">0</span>
+    <button id="add">Add 1</button>
+    <button id="subtract">Subtract 1 </button>
+    <button id="add if odd">Add if odd </button>
+  </p>
+  </div>
+  <script>
+
+  var store = Redux.createStore(function(state = 0,action){
+      switch(action.type){
+        case 'add':
+          return state + 1;
+        case 'subtract':
+          return state - 1;
+        default:
+          return state;
+      }
+  })
+
+  function render(){
+    document.getElementById('current_value').innerHTML = store.getState();
+  }
+
+  store.subscribe(render)
+
+  document.getElementById('add').addEventListener('click', function(){ store.dispatch({type : 'add'})})
+
+  document.getElementById('subtract').addEventListener('click',function(){ store.dispatch({type: 'subtract'})})
+
+  </script>
+</body>
+</html>
+
