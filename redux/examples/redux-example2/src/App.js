@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor(props){
+    super(props)
+  }
+
+  getFullName(){
+    return <div> Hello {this.props.fname} {this.props.lname} </div>
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Hello {this.props.fname} {this.props.lname}</h1>
+        <h1> {this.getFullName()}</h1>
       </div>
     );
   }
 }
+
+App.defaultProps = {fname:'default_fname',lname:'default_lname'}
 
 export default App;
